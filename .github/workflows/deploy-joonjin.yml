@@ -1,0 +1,38 @@
+name: Joonjin
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'joonjin/**'
+      - 'scripts/deploy-joonjin.sh'
+      - '.github/workflows/deploy-joonjin.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          VERSION=$(git rev-parse --short HEAD)
+          sed -i.bak -E "s/v=[A-Za-z0-9.-]+/v=$VERSION/g" joonjin/index.html
+          rm -f joonjin/index.html.bak
+          # 핀 없는 bunx는 npm의 latest 태그를 따라가므로, 새 버전이 태그만 먼저
+          # 올라가고 tarball이 아직 없는 창에 걸리면 404로 배포가 죽는다 (4.120.0 사고)
+          bunx wrangler@4.118.0 pages deploy joonjin \
+            --project-name joonjin-site \
+            --branch main \
+            --commit-dirty=true

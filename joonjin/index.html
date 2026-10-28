@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joon x Jin Works</title>
+    <meta name="description" content="Joon x Jin Works — 화투 한 장에서 시작한 작은 게임 공방. 첫 작품 『블로샤퍼(Blosharper)』. A small game studio that started with a single hwatu card." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f1ea" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#161512" media="(prefers-color-scheme: dark)" />
+    <link rel="canonical" href="https://joonjin.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://joonjin.com/" />
+    <meta property="og:site_name" content="Joon x Jin Works" />
+    <meta property="og:title" content="Joon x Jin Works" />
+    <meta property="og:description" content="화투 한 장에서 시작한 작은 게임 공방 · A small game studio that started with a single hwatu card." />
+    <meta property="og:image" content="https://joonjin.com/public/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Joon x Jin Works" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Joon x Jin Works" />
+    <meta name="twitter:description" content="화투 한 장에서 시작한 작은 게임 공방 · A small game studio that started with a single hwatu card." />
+    <meta name="twitter:image" content="https://joonjin.com/public/og.jpg" />
+
+    <link rel="icon" href="public/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="public/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="style.css?v=dev" />
+
+    <!-- 언어와 테마를 첫 페인트 전에 정한다: 저장된 선택 > 브라우저·OS 설정. -->
+    <script>
+      ;(function () {
+        var pick = null
+        try {
+          pick = localStorage.getItem('joonjin-lang')
+        } catch (e) {}
+        if (pick !== 'ko' && pick !== 'en') pick = /^ko\b/i.test(navigator.language || '') ? 'ko' : 'en'
+        document.documentElement.lang = pick
+        // 테마: 저장된 선택(dark|light)만 속성으로 박는다. 없으면 auto = OS 설정을 따른다.
+        var theme = null
+        try {
+          theme = localStorage.getItem('joonjin-theme')
+        } catch (e) {}
+        if (theme === 'dark' || theme === 'light') document.documentElement.setAttribute('data-theme', theme)
+      })()
+    </script>
+  </head>
+  <body>
+    <div class="controls">
+      <div class="lang" role="group" aria-label="Language / 언어">
+        <button type="button" class="lang-btn" data-lang="ko" aria-pressed="true">KO</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <!-- 테마 순환: 자동 → 어두움 → 밝음. 글리프·aria-label은 script.js가 상태에 맞춰 채운다. -->
+      <button type="button" class="theme-btn" data-theme-state="auto" aria-label="Theme: auto / 테마: 자동" hidden>
+        <span class="theme-glyph" aria-hidden="true">&#9680;&#xFE0E;</span>
+      </button>
+    </div>
+
+    <main class="page">
+      <header class="masthead">
+        <!-- 워드마크는 「Joon 💋 Jin Works」 — 「x」는 이모지를 막는 양식용 대체 표기다. 읽기 도구에는 평문을 준다. -->
+        <h1 class="name"><span class="wm" aria-hidden="true">Joon <span class="kiss">💋</span> Jin Works</span><span class="sr">Joon x Jin Works</span></h1>
+        <p class="tagline">
+          <span lang="ko">화투 한 장에서 시작한 작은 게임 공방</span>
+          <span lang="en">A small game studio that started with a single hwatu card.</span>
+        </p>
+      </header>
+
+      <section class="block" aria-labelledby="works-label">
+        <h2 class="label" id="works-label"><span lang="ko">작품</span><span lang="en">Works</span></h2>
+
+        <article class="work">
+          <img class="work-icon" src="public/blosharper-icon.webp" width="72" height="72" alt="" />
+          <div class="work-body">
+            <h3 class="work-title">Blosharper <span class="work-title-ko" lang="ko">블로샤퍼</span></h3>
+            <p class="work-line">
+              <span lang="ko">『블로샤퍼(Blosharper)』는 화투 패로 족보를 짜 라운드 목표 점수를 돌파하는 타짜 느와르 로그라이크 덱빌딩 게임입니다.</span>
+              <span lang="en">Blosharper is a card-shark noir roguelike deckbuilder: forge Korean Hwatu card combos to smash each round's target score.</span>
+            </p>
+            <p class="links">
+              <a href="https://store.steampowered.com/app/4718270/" target="_blank" rel="noopener">Steam</a>
+              <a href="https://store.onstove.com/ko/games/105719" target="_blank" rel="noopener">STOVE</a>
+              <a href="https://blosharper.com">blosharper.com</a>
+            </p>
+            <p class="soon">
+              App Store · Google Play —
+              <span lang="ko">준비 중</span><span lang="en">coming soon</span>
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="block" aria-labelledby="about-label">
+        <h2 class="label" id="about-label"><span lang="ko">공방</span><span lang="en">About</span></h2>
+        <p>
+          <span lang="ko">Joon x Jin Works는 웹 프론트엔드 기술로 게임을 만드는 작은 공방입니다. 첫 작품은 화투를 로그라이크 덱빌딩으로 다시 짠 『블로샤퍼』이고, 지금은 다음 작품을 준비하고 있습니다.</span>
+          <span lang="en">Joon x Jin Works is a small studio that builds games with web front-end technology. Our first title, Blosharper, rebuilds hwatu — the Korean flower cards — as a roguelike deckbuilder. The next one is already on the workbench.</span>
+        </p>
+      </section>
+
+      <section class="block" aria-labelledby="contact-label">
+        <h2 class="label" id="contact-label"><span lang="ko">연락</span><span lang="en">Contact</span></h2>
+        <dl class="contact">
+          <div>
+            <dt><span lang="ko">메일</span><span lang="en">Email</span></dt>
+            <dd>
+              <a href="mailto:support@joonjin.com">support@joonjin.com</a>
+              <button type="button" class="copy" data-copy="support@joonjin.com" hidden>
+                <span class="copy-idle"><span lang="ko">복사</span><span lang="en">copy</span></span>
+                <span class="copy-done"><span lang="ko">복사됨</span><span lang="en">copied</span></span>
+              </button>
+            </dd>
+          </div>
+          <div>
+            <dt><span lang="ko">디스코드</span><span lang="en">Discord</span></dt>
+            <dd><a href="https://discord.gg/Nf7Ctt9f3" target="_blank" rel="noopener">discord.gg/Nf7Ctt9f3</a></dd>
+          </div>
+        </dl>
+      </section>
+
+      <footer class="foot">
+        <p>&copy; 2026 <span class="wm" aria-hidden="true">Joon <span class="kiss">💋</span> Jin Works</span><span class="sr">Joon x Jin Works</span></p>
+        <p class="foot-links">
+          <a href="https://blosharper.com/privacy"><span lang="ko">개인정보처리방침</span><span lang="en">Privacy</span></a>
+          <a href="https://blosharper.com/support"><span lang="ko">고객 지원</span><span lang="en">Support</span></a>
+        </p>
+      </footer>
+    </main>
+
+    <script src="script.js?v=dev" defer></script>
+  </body>
+</html>
